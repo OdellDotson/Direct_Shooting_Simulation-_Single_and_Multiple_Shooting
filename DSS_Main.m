@@ -20,8 +20,8 @@ N = 60;
 
 m = 1; % number of control input
 
-%[X,U,t,J] = DSS(L,M,h,r,f,x_0,m,T,N); % or DMS
-[X,U,t,J] = DMS(L,M,h,r,f,x_0,m,T,N); % or DMS
+[X,U,t,J] = DSS(L,M,h,r,f,x_0,m,T,N); % or DMS
+%[X,U,t,J] = DMS(L,M,h,r,f,x_0,m,T,N); % or DMS
 %%
 
 subplot(2,1,1)

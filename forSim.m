@@ -1,12 +1,18 @@
-function [X,t] = forSim(f,x_0,U,T,N)
+function [X,ts] = forSim(f,x_0,U,T,N)
 % u(x,t)
 
-t = linspace(0,T,N+1);
+ts = linspace(0,T,N+1);
 X = zeros(numel(x_0),N+1);
-dt = T/N;
+dt = 0.1*T/N;
 X(:,1) = x_0;
-for i = 1:N,
-    X(:,i+1) = rk4(f,X(:,i),U(:,i),t(i),dt);
+for i = 1:N
+    tnow=ts(i);
+    Xtemp=X(:,i);
+    while tnow < ts(i+1)
+        Xtemp = rk4(f,Xtemp,U(:,i),tnow,dt);
+        tnow=tnow+dt;
+    end
+    X(:,i+1) = Xtemp;
 end
 
 end
